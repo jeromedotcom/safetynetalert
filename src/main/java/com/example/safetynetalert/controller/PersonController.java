@@ -23,4 +23,9 @@ public class PersonController {
         return personService.getPersonsFromLastName(lastName);
     }
 
+    @GetMapping("/firestations")
+    public Iterable<Person> getPersonsFromFirestation(@PathParam("station") String station) {
+        return personService.getPersonsFromFirestation(station);
+    }
+
 }

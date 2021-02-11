@@ -1,6 +1,7 @@
 package com.example.safetynetalert.service;
 
 import com.example.safetynetalert.model.Person;
+import com.example.safetynetalert.repository.FirestationRepository;
 import com.example.safetynetalert.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,10 @@ public class PersonService {
 
     public Iterable<Person> getPersonsFromLastName(String lastName) {
         return personRepository.findByLastName(lastName);
+    }
+
+    public Iterable<Person> getPersonsFromFirestation(String station) {
+
+        return null;
     }
 }

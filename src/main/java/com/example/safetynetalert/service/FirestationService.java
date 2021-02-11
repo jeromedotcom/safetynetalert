@@ -16,4 +16,9 @@ public class FirestationService {
     public void save(List<Firestation> firestations) {
         firestationRepository.saveAll(firestations);
     }
+
+    public Iterable<Firestation> getAddressesFromStation(int station) {
+        return firestationRepository.getAllByStation(station);
+    }
+
 }
