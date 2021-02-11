@@ -1,9 +1,16 @@
 package com.example.safetynetalert.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class Firestation {
 
     private int station;
     private String address;
+
+    public Firestation(){}
 
     public int getStation() {
         return station;

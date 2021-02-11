@@ -1,9 +1,18 @@
 package com.example.safetynetalert.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@AllArgsConstructor
+
 public class AllDataObject {
+
+    public AllDataObject(){}
 
     private List<Person> persons = new ArrayList<Person>();
     private List<Firestation> firestations = new ArrayList<Firestation>();

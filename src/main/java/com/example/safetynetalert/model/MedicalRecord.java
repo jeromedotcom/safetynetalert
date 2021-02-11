@@ -1,14 +1,21 @@
 package com.example.safetynetalert.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@AllArgsConstructor
 public class MedicalRecord {
     private String firstName;
     private String lastName;
     private String birthdate;
     private List<String> medications = new ArrayList<>();
     private List<String> allergies = new ArrayList<>();
+
+    public MedicalRecord(){}
 
     public String getFirstName() {
         return firstName;
@@ -48,5 +55,16 @@ public class MedicalRecord {
 
     public void setAllergies(List<String> allergies) {
         this.allergies = allergies;
+    }
+
+    @Override
+    public String toString() {
+        return "MedicalRecord{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthdate='" + birthdate + '\'' +
+                ", medications=" + medications +
+                ", allergies=" + allergies +
+                '}';
     }
 }

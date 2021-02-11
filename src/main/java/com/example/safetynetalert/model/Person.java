@@ -1,7 +1,21 @@
 package com.example.safetynetalert.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Data
+@AllArgsConstructor
+@Entity
 public class Person {
 
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    private Long id;
     private String firstName;
     private String lastName;
     private String address;
@@ -9,6 +23,8 @@ public class Person {
     private String zip;
     private String phone;
     private String email;
+
+    public Person(){}
 
     public String getFirstName() {
         return firstName;
@@ -64,5 +80,13 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
