@@ -3,16 +3,24 @@ package com.example.safetynetalert.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 @Data
 @AllArgsConstructor
 public class MedicalRecord {
+
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    private Long id;
     private String firstName;
     private String lastName;
     private String birthdate;
+    @ElementCollection
     private List<String> medications = new ArrayList<>();
+    @ElementCollection
     private List<String> allergies = new ArrayList<>();
 
     public MedicalRecord(){}

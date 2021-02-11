@@ -1,7 +1,10 @@
 package com.example.safetynetalert;
 
 import com.example.safetynetalert.model.AllDataObject;
+import com.example.safetynetalert.model.MedicalRecord;
 import com.example.safetynetalert.model.Person;
+import com.example.safetynetalert.service.FirestationService;
+import com.example.safetynetalert.service.MedicalRecordService;
 import com.example.safetynetalert.service.PersonService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,11 @@ public class SafetynetalertApplication {
     }
     @Autowired
     PersonService personService;
+    @Autowired
+    FirestationService firestationService;
+    @Autowired
+    MedicalRecordService medicalRecordService;
+
     @Bean
     CommandLineRunner runner() {
         return args -> {
@@ -36,16 +44,9 @@ public class SafetynetalertApplication {
                 e.printStackTrace();
             }
 
-
-            System.out.println(allDataObject.getFirestations().get(2).getAddress());
-            System.out.println(allDataObject.getMedicalrecords().toString());
-            System.out.println(allDataObject.getMedicalrecords().remove(1));
-            System.out.println(allDataObject.getMedicalrecords().toString());
-            List<Person> persons = new ArrayList<>();
-            persons = allDataObject.getPersons();
-            System.out.println(persons);
-
-            personService.save(persons);
+            personService.save(allDataObject.getPersons());
+            firestationService.save(allDataObject.getFirestations());
+            medicalRecordService.save(allDataObject.getMedicalrecords());
             System.out.println("persons saved!");
         };
 

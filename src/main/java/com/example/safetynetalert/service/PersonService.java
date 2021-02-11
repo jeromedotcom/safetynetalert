@@ -34,4 +34,7 @@ public class PersonService {
     }
 
 
+    public Iterable<Person> getPersonsFromLastName(String lastName) {
+        return personRepository.findByLastName(lastName);
+    }
 }
