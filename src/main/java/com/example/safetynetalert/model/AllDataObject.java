@@ -2,13 +2,15 @@ package com.example.safetynetalert.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 
 import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
 
 public class AllDataObject {
 

@@ -7,6 +7,8 @@ import com.example.safetynetalert.service.FirestationService;
 import com.example.safetynetalert.service.MedicalRecordService;
 import com.example.safetynetalert.service.PersonService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,11 +21,12 @@ import java.util.List;
 
 @SpringBootApplication
 public class SafetynetalertApplication {
-
+    private Logger logger = LogManager.getLogger(SafetynetalertApplication.class);
     public AllDataObject allDataObject;
 
     public static void main(String[] args) {
         SpringApplication.run(SafetynetalertApplication.class, args);
+
     }
     @Autowired
     PersonService personService;
@@ -34,7 +37,9 @@ public class SafetynetalertApplication {
 
     @Bean
     CommandLineRunner runner() {
+        logger.info("Initializing SafetyNetAlert");
         return args -> {
+
             ObjectMapper mapper = new ObjectMapper();
             //mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             allDataObject = null;
@@ -47,6 +52,7 @@ public class SafetynetalertApplication {
             personService.save(allDataObject.getPersons());
             firestationService.save(allDataObject.getFirestations());
             medicalRecordService.save(allDataObject.getMedicalrecords());
+            logger.info("Datas saved!");
             System.out.println("persons saved!");
         };
 
