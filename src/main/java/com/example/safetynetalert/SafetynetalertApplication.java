@@ -48,8 +48,6 @@ public class SafetynetalertApplication {
             firestationService.save(allDataObject.getFirestations());
             medicalRecordService.save(allDataObject.getMedicalrecords());
             System.out.println("persons saved!");
-            System.out.println(firestationService.getAddressesFromStation(1));
-
         };
 
 
