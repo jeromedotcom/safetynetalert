@@ -13,16 +13,16 @@ public class Firestation {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
-    private int station;
+    private String station;
     private String address;
 
     public Firestation(){}
 
-    public int getStation() {
+    public String getStation() {
         return station;
     }
 
-    public void setStation(int station) {
+    public void setStation(String station) {
         this.station = station;
     }
 

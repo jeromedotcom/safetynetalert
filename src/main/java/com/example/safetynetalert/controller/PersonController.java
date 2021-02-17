@@ -44,7 +44,6 @@ public class PersonController {
      * @param firstName first name of the person
      * @return an iterable of persons
      */
-    // Todo utiliser optionnal si une seule personne ?
     @GetMapping("/person/{lastName}/{firstName}")
     public Optional<Person> getPersonFromLastNameAndFirstName(@PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName) {
         return personService.getPersonFromLastNameAndFirstName(lastName, firstName);
