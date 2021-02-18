@@ -7,13 +7,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-import java.util.List;
-
 @Repository
 @Transactional
 public interface FirestationRepository extends CrudRepository<Firestation, Long> {
+    Iterable<Firestation> findAllByStation(String station);
 
-    Iterable<Firestation> getAllByStation(int station);
-    List<String> (int station);
+    Optional<Firestation> findByAddress(String address);
+
+    void deleteByStation(String station);
+
+    void deleteByAddress(String address);
 
 }

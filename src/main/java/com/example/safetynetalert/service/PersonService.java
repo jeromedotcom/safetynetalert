@@ -1,7 +1,9 @@
 package com.example.safetynetalert.service;
 
+import com.example.safetynetalert.model.Firestation;
+import com.example.safetynetalert.model.MedicalRecord;
+import com.example.safetynetalert.model.MergedObject;
 import com.example.safetynetalert.model.Person;
-import com.example.safetynetalert.repository.FirestationRepository;
 import com.example.safetynetalert.repository.PersonRepository;
 import com.sun.scenario.effect.Merge;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +54,8 @@ public class PersonService {
         return personRepository.findByLastName(lastName);
     }
 
-    public Iterable<Person> getPersonsFromFirestation(String station) {
-
-        return null;
+    public Optional<Person> getPersonFromLastNameAndFirstName(String lastName, String firstName) {
+        return personRepository.findByLastNameAndFirstName(lastName, firstName);
     }
 
     public void deletePersonFromLastNameAndFirstName(String lastName, String firstName) {
