@@ -1,10 +1,9 @@
 package com.example.safetynetalert;
 
-import com.example.safetynetalert.model.AllDataObject;
-import com.example.safetynetalert.model.MedicalRecord;
-import com.example.safetynetalert.model.Person;
+import com.example.safetynetalert.model.*;
 import com.example.safetynetalert.service.FirestationService;
 import com.example.safetynetalert.service.MedicalRecordService;
+import com.example.safetynetalert.service.MergedObjectService;
 import com.example.safetynetalert.service.PersonService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
@@ -18,6 +17,7 @@ import org.springframework.context.annotation.Bean;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class SafetynetalertApplication {
@@ -34,6 +34,8 @@ public class SafetynetalertApplication {
     FirestationService firestationService;
     @Autowired
     MedicalRecordService medicalRecordService;
+    @Autowired
+    MergedObjectService mergedObjectService;
 
     @Bean
     CommandLineRunner runner() {
@@ -54,7 +56,9 @@ public class SafetynetalertApplication {
             medicalRecordService.save(allDataObject.getMedicalrecords());
             logger.info("Datas saved!");
             System.out.println("persons saved!");
+            //mergedObjectService.getPersonWithStation();
         };
+
 
 
 

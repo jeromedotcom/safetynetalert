@@ -26,7 +26,7 @@ public class FirestationService {
         return firestationRepository.findAllByStation(station);
     }
 
-    public Optional<Firestation> getFirestationsFromAddress(String address) {
+    public Optional<Firestation> getFirestationFromAddress(String address) {
         return firestationRepository.findByAddress(address);
     }
 

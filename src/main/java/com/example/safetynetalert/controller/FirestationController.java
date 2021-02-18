@@ -34,12 +34,12 @@ public class FirestationController {
 
     @GetMapping("/firestation/address/{address}")
     public Optional<Firestation> getFirestation(@PathVariable String address) {
-        return firestationService.getFirestationsFromAddress(address);
+        return firestationService.getFirestationFromAddress(address);
     }
 
     @PutMapping("/firestation/{address}")
     public Firestation updateFirestation(@PathVariable("address") final String address, @RequestBody Firestation firestation) {
-        Optional<Firestation> f = firestationService.getFirestationsFromAddress(address);
+        Optional<Firestation> f = firestationService.getFirestationFromAddress(address);
         if(f.isPresent()) {
             Firestation currentFirestation = f.get();
 

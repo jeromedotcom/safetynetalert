@@ -1,5 +1,6 @@
 package com.example.safetynetalert.controller;
 
+import com.example.safetynetalert.model.MergedObject;
 import com.example.safetynetalert.model.Person;
 import com.example.safetynetalert.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
