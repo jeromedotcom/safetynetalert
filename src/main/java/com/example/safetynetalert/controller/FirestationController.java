@@ -29,7 +29,7 @@ public class FirestationController {
      */
     @GetMapping("/firestation/{station}")
     public Iterable<Firestation> getFirestations(@PathVariable String station) {
-        return firestationService.getFirestations(station);
+        return firestationService.getFirestationsFromStationNumber(station);
     }
 
     @GetMapping("/firestation/address/{address}")

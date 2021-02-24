@@ -14,7 +14,7 @@ public class MedicalRecordService {
     @Autowired
     MedicalRecordRepository medicalRecordRepository;
 
-    public void save (List<MedicalRecord> medicalRecords) {
+    public void saveMedicalRecords(List<MedicalRecord> medicalRecords) {
         medicalRecordRepository.saveAll(medicalRecords);
     }
 

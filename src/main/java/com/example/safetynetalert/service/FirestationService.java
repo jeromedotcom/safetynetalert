@@ -14,7 +14,7 @@ public class FirestationService {
     FirestationRepository firestationRepository;
 
 
-    public void save(List<Firestation> firestations) {
+    public void saveFirestations(List<Firestation> firestations) {
         firestationRepository.saveAll(firestations);
     }
 
@@ -22,7 +22,7 @@ public class FirestationService {
         return firestationRepository.save(firestation);
     }
 
-    public Iterable<Firestation> getFirestations(String station) {
+    public Iterable<Firestation> getFirestationsFromStationNumber(String station) {
         return firestationRepository.findAllByStation(station);
     }
 

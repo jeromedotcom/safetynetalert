@@ -29,43 +29,46 @@ public class PersonService {
     @Autowired
     private MedicalRecordService medicalRecordService;
 
-    public PersonService(){
+    /*public PersonService(){
 
     }
 
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
-    }
-
-    public Iterable<Person> getPersons() {
-        return personRepository.findAll();
-    }
+    }*/
 
     public Person savePerson(Person person) {
         return personRepository.save(person);
     }
 
-    public void save(List<Person> persons) {
+    public void savePersons(List<Person> persons) {
         personRepository.saveAll(persons);
     }
 
 
-    public Iterable<Person> getPersonsFromLastName(String lastName) {
+    /*public Iterable<Person> getPersonsFromLastName(String lastName) {
         return personRepository.findByLastName(lastName);
+    }*/
+
+    public Iterable<Person> getPersons() {
+        return personRepository.findAll();
     }
 
     public Optional<Person> getPersonFromLastNameAndFirstName(String lastName, String firstName) {
         return personRepository.findByLastNameAndFirstName(lastName, firstName);
     }
 
-    public void deletePersonFromLastNameAndFirstName(String lastName, String firstName) {
-        personRepository.deletePersonByLastNameAndFirstName(lastName, firstName);
-    }
-
     public Iterable<Person> getPersonFromAddress(String address) {
         return personRepository.findPersonByAddress(address);
     }
 
+    public void deletePersonFromLastNameAndFirstName(String lastName, String firstName) {
+        personRepository.deletePersonByLastNameAndFirstName(lastName, firstName);
+    }
+
+
+
+    //TODO à mettre dans medical record ?
     public int getAge(String firstName, String lastName){
         MedicalRecord m = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(lastName, firstName);
         String birthdate = m.getBirthdate();

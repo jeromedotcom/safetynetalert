@@ -13,22 +13,20 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @SpringBootApplication
 public class SafetynetalertApplication {
-    private Logger logger = LogManager.getLogger(SafetynetalertApplication.class);
-    public AllDataObject allDataObject;
+    /*private Logger logger = LogManager.getLogger(SafetynetalertApplication.class);
+    public AllDataObject allDataObject;*/
 
     public static void main(String[] args) {
         SpringApplication.run(SafetynetalertApplication.class, args);
 
     }
-    @Autowired
+    /*@Autowired
     PersonService personService;
     @Autowired
     FirestationService firestationService;
@@ -38,6 +36,7 @@ public class SafetynetalertApplication {
     MergedObjectService mergedObjectService;
 
     @Bean
+    @Profile("!test")
     CommandLineRunner runner() {
         logger.info("Initializing SafetyNetAlert");
         return args -> {
@@ -51,9 +50,9 @@ public class SafetynetalertApplication {
                 e.printStackTrace();
             }
 
-            personService.save(allDataObject.getPersons());
-            firestationService.save(allDataObject.getFirestations());
-            medicalRecordService.save(allDataObject.getMedicalrecords());
+            personService.savePersons(allDataObject.getPersons());
+            firestationService.saveFirestations(allDataObject.getFirestations());
+            medicalRecordService.saveMedicalRecords(allDataObject.getMedicalrecords());
             logger.info("Datas saved!");
             System.out.println("persons saved!");
             //mergedObjectService.getPersonWithStation();
@@ -64,5 +63,5 @@ public class SafetynetalertApplication {
 
 
 
-    }
+    }*/
 }
