@@ -1,13 +1,16 @@
 package com.example.safetynetalert.service;
 
 
+import com.example.safetynetalert.controller.FirestationController;
 import com.example.safetynetalert.model.MedicalRecord;
 import com.example.safetynetalert.repository.MedicalRecordRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 
 
 import java.util.ArrayList;
@@ -17,7 +20,8 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-@SpringBootTest
+@WebMvcTest(controllers = MedicalRecordService.class)
+@ActiveProfiles("test")
 public class MedicalRecordServiceTest {
 
     @MockBean

@@ -1,5 +1,6 @@
 package com.example.safetynetalert.service;
 
+import com.example.safetynetalert.controller.FirestationController;
 import com.example.safetynetalert.model.Firestation;
 import com.example.safetynetalert.repository.FirestationRepository;
 import org.junit.jupiter.api.BeforeAll;
@@ -7,20 +8,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@WebMvcTest(controllers = FirestationService.class)
+@ActiveProfiles("test")
 public class FirestationServiceTest {
 
     @MockBean
@@ -68,7 +70,7 @@ public class FirestationServiceTest {
         firestationService.getFirestationFromAddress(any(String.class));
         verify(firestationRepository, times(1)).findByAddress(any(String.class));*/
 
-        when(firestationRepository.findByAddress("abc")).thenReturn(Optional.ofNullable(f1));
+        when(firestationRepository.findByAddress("abc")).thenReturn(java.util.Optional.ofNullable(f1));
         firestationService.getFirestationFromAddress("abc");
         verify(firestationRepository, times(1)).findByAddress("abc");
 
@@ -83,8 +85,14 @@ public class FirestationServiceTest {
 
     @Test
     public void deleteFirestationByStation_ShouldUseFirestationRepository() {
-        firestationRepository.deleteByStation("1");
-        verify(firestationRepository, times(1)).deleteByStation("1");
+        firestationService.deleteFirestationByStation(anyString());
+        verify(firestationRepository, times(1)).deleteByStation(anyString());
+    }
+
+    @Test
+    public void deleteFirestationByAddress_ShouldUseFirestationRepository() {
+        firestationService.deleteFirestationByAddress(anyString());
+        verify(firestationRepository, times(1)).deleteByAddress(anyString());
     }
 
     @Test
@@ -98,9 +106,9 @@ public class FirestationServiceTest {
         assertThat(firestationList.isEmpty());
     }
 
-    @Test
+    /*@Test
     public void deleteNotExistingFirestation_ShouldNotUseFirestationRepository() {
         when(firestationService.getFirestationsFromStationNumber("3")).thenReturn(null);
         firestationRepository.deleteByStation("3");
-    }
+    }*/
 }

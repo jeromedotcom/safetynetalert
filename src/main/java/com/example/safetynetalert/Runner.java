@@ -27,8 +27,7 @@ public class Runner implements CommandLineRunner {
     private Logger logger = LogManager.getLogger(SafetynetalertApplication.class);
 
     @Override
-
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         logger.info("Initializing SafetyNetAlert");
         ObjectMapper mapper = new ObjectMapper();
         AllDataObject allDataObject = null;

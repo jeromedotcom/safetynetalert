@@ -2,15 +2,19 @@ package com.example.safetynetalert.controller;
 
 import com.example.safetynetalert.model.Firestation;
 import com.example.safetynetalert.service.FirestationService;
+import com.example.safetynetalert.service.FirestationPeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.Optional;
 
 @RestController
 public class FirestationController {
     @Autowired
     FirestationService firestationService;
+    @Autowired
+    FirestationPeopleService firestationPeopleService;
 
     /**
      * CREATE add a new mapping
@@ -28,12 +32,12 @@ public class FirestationController {
      * @return mapping
      */
     @GetMapping("/firestation/{station}")
-    public Iterable<Firestation> getFirestations(@PathVariable String station) {
+    public Iterable<Firestation> getFirestationsFromStation(@PathVariable String station) {
         return firestationService.getFirestationsFromStationNumber(station);
     }
 
     @GetMapping("/firestation/address/{address}")
-    public Optional<Firestation> getFirestation(@PathVariable String address) {
+    public Optional<Firestation> getFirestationFromAddress(@PathVariable String address) {
         return firestationService.getFirestationFromAddress(address);
     }
 
@@ -62,4 +66,5 @@ public class FirestationController {
     public void deleteFirestationByAddress(@PathVariable("address") String address) {
         firestationService.deleteFirestationByAddress(address);
     }
+
 }
