@@ -1,9 +1,6 @@
 package com.example.safetynetalert.service;
 
-import com.example.safetynetalert.model.Firestation;
-import com.example.safetynetalert.model.MedicalRecord;
-import com.example.safetynetalert.model.MergedObject;
-import com.example.safetynetalert.model.Person;
+import com.example.safetynetalert.model.*;
 import com.example.safetynetalert.repository.PersonRepository;
 import com.sun.scenario.effect.Merge;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +11,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,5 +78,6 @@ public class PersonService {
         System.out.println(age);
         return age;
     }
+
 
 }
