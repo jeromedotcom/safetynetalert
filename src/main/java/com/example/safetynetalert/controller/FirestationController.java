@@ -13,8 +13,6 @@ import java.util.Optional;
 public class FirestationController {
     @Autowired
     FirestationService firestationService;
-    @Autowired
-    FirestationPeopleService firestationPeopleService;
 
     /**
      * CREATE add a new mapping

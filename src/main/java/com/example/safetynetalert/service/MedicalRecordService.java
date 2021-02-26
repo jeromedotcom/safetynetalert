@@ -29,4 +29,6 @@ public class MedicalRecordService {
     public void deleteMedicalRecordByLastNameAndFirstName(String lastName, String firstName) {
         medicalRecordRepository.deleteMedicalRecordByLastNameAndFirstName(lastName, firstName);
     }
+
+
 }

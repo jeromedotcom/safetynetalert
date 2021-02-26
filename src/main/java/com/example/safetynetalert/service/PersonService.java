@@ -69,7 +69,7 @@ public class PersonService {
 
 
     //TODO à mettre dans medical record ?
-    public int getAge(String firstName, String lastName){
+    public int getAge(String lastName, String firstName){
         MedicalRecord m = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(lastName, firstName);
         String birthdate = m.getBirthdate();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");

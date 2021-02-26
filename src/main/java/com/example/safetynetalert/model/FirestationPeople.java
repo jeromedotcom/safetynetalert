@@ -1,12 +1,14 @@
 package com.example.safetynetalert.model;
 
 import lombok.Data;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RestController;
 
 @Data
 public class FirestationPeople {
-    List<FirestationPeople> firestationPeopleList;
-    Long childCount;
-    Long adultCount;
+
+    String firstName;
+    String lastName;
+    String address;
+    String phone;
+
 }
