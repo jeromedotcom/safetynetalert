@@ -21,11 +21,8 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-     //TODO à supprimer après le test de merged object
     @Autowired
-    private FirestationService firestationService;
-    @Autowired
-    private MedicalRecordService medicalRecordService;
+    MedicalRecordService medicalRecordService;
 
     /*public PersonService(){
 
@@ -80,4 +77,14 @@ public class PersonService {
     }
 
 
+    public List getEmailsFromCity(String city) {
+        Iterable<Person> persons = personRepository.findAllByCity(city);
+        List emails = new ArrayList();
+        for (Person person : persons
+             ) {
+            if (!emails.contains(person.getEmail()))
+            emails.add(person.getEmail());
+        }
+        return emails;
+    }
 }

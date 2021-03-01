@@ -20,4 +20,6 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
     void deletePersonByLastNameAndFirstName(String lastName, String firstName);
 
     Iterable<Person> findPersonByAddress(String address);
+
+    Iterable<Person> findAllByCity(String city);
 }

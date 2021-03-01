@@ -1,21 +1,7 @@
 package com.example.safetynetalert;
 
-import com.example.safetynetalert.model.*;
-import com.example.safetynetalert.service.FirestationService;
-import com.example.safetynetalert.service.MedicalRecordService;
-import com.example.safetynetalert.service.MergedObjectService;
-import com.example.safetynetalert.service.PersonService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Profile;
-
-import java.io.File;
 
 @SpringBootApplication
 public class SafetynetalertApplication {
@@ -26,42 +12,5 @@ public class SafetynetalertApplication {
         SpringApplication.run(SafetynetalertApplication.class, args);
 
     }
-    /*@Autowired
-    PersonService personService;
-    @Autowired
-    FirestationService firestationService;
-    @Autowired
-    MedicalRecordService medicalRecordService;
-    @Autowired
-    MergedObjectService mergedObjectService;
 
-    @Bean
-    @Profile("!test")
-    CommandLineRunner runner() {
-        logger.info("Initializing SafetyNetAlert");
-        return args -> {
-
-            ObjectMapper mapper = new ObjectMapper();
-            //mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            allDataObject = null;
-            try {
-            allDataObject = mapper.readValue(new File("src/main/resources/data.json"), AllDataObject.class);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            personService.savePersons(allDataObject.getPersons());
-            firestationService.saveFirestations(allDataObject.getFirestations());
-            medicalRecordService.saveMedicalRecords(allDataObject.getMedicalrecords());
-            logger.info("Datas saved!");
-            System.out.println("persons saved!");
-            //mergedObjectService.getPersonWithStation();
-        };
-
-
-
-
-
-
-    }*/
 }

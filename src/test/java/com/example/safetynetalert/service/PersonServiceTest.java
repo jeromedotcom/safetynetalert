@@ -28,6 +28,8 @@ public class PersonServiceTest {
     PersonRepository personRepository;
     @Autowired
     PersonService personService ;
+    @MockBean
+    MedicalRecordService medicalRecordService;
 
 
     @Test
