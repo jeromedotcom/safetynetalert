@@ -1,7 +1,10 @@
 package com.example.safetynetalert.controller;
 
+import com.example.safetynetalert.SafetynetalertApplication;
 import com.example.safetynetalert.model.Person;
 import com.example.safetynetalert.service.PersonService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +15,8 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
+    private Logger logger = LogManager.getLogger(PersonController.class);
+
     /**
      * Create - save a new person
      * @param person
@@ -19,6 +24,8 @@ public class PersonController {
      */
     @PostMapping("/person")
     public Person createPerson(@RequestBody Person person) {
+        logger.info("requête POST sur le endpoint /person avec le body person: " + person);
+
         return personService.savePerson(person);
     }
 
@@ -28,13 +35,9 @@ public class PersonController {
      */
     @GetMapping("/persons")
     public Iterable<Person> getPersons(){
+        logger.info("requête GET sur le endpoint /persons");
         return personService.getPersons();
     }
-
-    /*@GetMapping("/persons/lastName")
-    public Iterable<Person> getPersonsFromFirstName(@PathParam("lastName") String lastName) {
-        return personService.getPersonsFromLastName(lastName);
-    }*/
 
     /**
      * Read - Get one person
@@ -44,6 +47,7 @@ public class PersonController {
      */
     @GetMapping("/person/{lastName}/{firstName}")
     public Optional<Person> getPersonFromLastNameAndFirstName(@PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName) {
+        logger.info("requête GET sur le endpoint /persons avec les paramètres lastName: " + lastName + " et firstName: " + firstName);
         return personService.getPersonFromLastNameAndFirstName(lastName, firstName);
     }
 
@@ -57,7 +61,8 @@ public class PersonController {
      */
     @PutMapping("/person/{lastName}/{firstName}")
     public Person updatePerson(@PathVariable("lastName") final String lastName, @PathVariable("firstName") final String firstName, @RequestBody Person person) {
-        //return personService.savePerson(person);
+        logger.info("requête PUT sur le endpoint /person avec les paramètres lastName: " + lastName + " et firstName: " + firstName);
+
         Optional<Person> p = personService.getPersonFromLastNameAndFirstName(lastName, firstName);
         if(p.isPresent()) {
             Person currentPerson = p.get();
@@ -96,6 +101,8 @@ public class PersonController {
      */
     @DeleteMapping("/person/{lastName}/{firstName}")
     public void deletePersonFromLastNameAndFirstName(@PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName) {
+        logger.info("requête DELETE sur le endpoint /person avec les paramètres lastName: " + lastName + " et firstName: " + firstName);
+
         personService.deletePersonFromLastNameAndFirstName(lastName, firstName);
     }
 

@@ -1,8 +1,11 @@
 package com.example.safetynetalert.service;
 
+import com.example.safetynetalert.SafetynetalertApplication;
 import com.example.safetynetalert.model.ChildAlert;
 import com.example.safetynetalert.model.ChildAlertList;
 import com.example.safetynetalert.model.Person;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,8 @@ import java.util.List;
 public class ChildAlertService {
     @Autowired
     PersonService personService;
+
+    private Logger logger = LogManager.getLogger(ChildAlertService.class);
 
     public ChildAlertList getChildFromAddress(String address) {
         ChildAlertList childAlertList = new ChildAlertList();
@@ -35,6 +40,7 @@ public class ChildAlertService {
             childAlertList.setOtherFamilyMembers(adultTransferList);
             childAlertList.setChild(childTransferList);
         }
+        logger.info("réponse en retour à la requête GET sur le endpoint /childAlert avec paramètre address: " + address);
         return childAlertList;
     }
 

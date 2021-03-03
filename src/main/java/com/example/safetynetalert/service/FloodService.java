@@ -1,7 +1,10 @@
 package com.example.safetynetalert.service;
 
+import com.example.safetynetalert.SafetynetalertApplication;
 import com.example.safetynetalert.model.*;
 import com.sun.scenario.effect.Flood;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,38 +21,43 @@ public class FloodService {
     @Autowired
     MedicalRecordService medicalRecordService;
 
-    public List getPeopleWhenFloodFromStationNumber(String stationNumber) {
+    private Logger logger = LogManager.getLogger(FloodService.class);
+
+    public List getPeopleWhenFloodFromStationNumber(List<String> stationNumbers) {
 
         List<FloodList> floodLists = new ArrayList<>();
-
-        Iterable<Firestation> firestations = firestationService.getFirestationsFromStationNumber(stationNumber);
-        for (Firestation firestation: firestations
+        for (String stationNumber : stationNumbers
         ) {
-            List<FloodPeople> floodPeopleList = new ArrayList<>();
-            FloodList floodList = new FloodList();
-            Iterable<Person> persons = personService.getPersonFromAddress(firestation.getAddress());
-            for (Person person : persons
+            Iterable<Firestation> firestations = firestationService.getFirestationsFromStationNumber(stationNumber);
+            for (Firestation firestation : firestations
             ) {
-                int age = personService.getAge(person.getLastName(), person.getFirstName());
-                List allergies = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(person.getLastName(), person.getFirstName()).getAllergies();
-                List medication = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(person.getLastName(), person.getFirstName()).getMedications();
+                List<FloodPeople> floodPeopleList = new ArrayList<>();
+                FloodList floodList = new FloodList();
+                Iterable<Person> persons = personService.getPersonFromAddress(firestation.getAddress());
+                for (Person person : persons
+                ) {
+                    int age = personService.getAge(person.getLastName(), person.getFirstName());
+                    List allergies = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(person.getLastName(), person.getFirstName()).getAllergies();
+                    List medication = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(person.getLastName(), person.getFirstName()).getMedications();
 
-                FloodPeople floodPeople = new FloodPeople();
-                floodPeople.setLastName(person.getLastName());
-                floodPeople.setFirstName(person.getFirstName());
-                floodPeople.setAge(age);
-                floodPeople.setPhone(person.getPhone());
-                floodPeople.setAllergies(allergies);
-                floodPeople.setMedications(medication);
+                    FloodPeople floodPeople = new FloodPeople();
+                    floodPeople.setLastName(person.getLastName());
+                    floodPeople.setFirstName(person.getFirstName());
+                    floodPeople.setAge(age);
+                    floodPeople.setPhone(person.getPhone());
+                    floodPeople.setAllergies(allergies);
+                    floodPeople.setMedications(medication);
 
-                floodPeopleList.add(floodPeople);
+                    floodPeopleList.add(floodPeople);
+                }
+                floodList.setAddress(firestation.getAddress());
+                floodList.setStation(stationNumber);
+                floodList.setFloodPeopleList(floodPeopleList);
+                floodLists.add(floodList);
             }
-            floodList.setAddress(firestation.getAddress());
-            floodList.setStation(stationNumber);
-            floodList.setFloodPeopleList(floodPeopleList);
-            floodLists.add(floodList);
         }
+            logger.info("réponse en retour à la requête sur le endpoint /flood/stations avec le paramètre stationNumber: " + stationNumbers);
+            return floodLists;
 
-        return floodLists;
     }
 }

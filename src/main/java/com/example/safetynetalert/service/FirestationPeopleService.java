@@ -1,6 +1,8 @@
 package com.example.safetynetalert.service;
 
 import com.example.safetynetalert.model.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,13 @@ public class FirestationPeopleService {
     @Autowired
     MedicalRecordService medicalRecordService;
 
+    private Logger logger = LogManager.getLogger(FirestationPeopleService.class);
 
+    /**
+     *
+     * @param stationNumber
+     * @return
+     */
 
     public FirestationPeopleList getPeopleFromFirestationNumber(String stationNumber) {
 
@@ -53,6 +61,7 @@ public class FirestationPeopleService {
         firestationPeopleList2.setFirestationPeople(firestationPeopleList);
         firestationPeopleList2.setAdult(adultCount);
         firestationPeopleList2.setChild(childCount);
+        logger.info("réponse en retour à la requête GET sur le endpoint /firestation avec le paramètre stationNumber: " + stationNumber);
         return firestationPeopleList2;
 
 

@@ -1,8 +1,11 @@
 package com.example.safetynetalert.service;
 
+import com.example.safetynetalert.SafetynetalertApplication;
 import com.example.safetynetalert.model.*;
 import com.example.safetynetalert.repository.PersonRepository;
 import com.sun.scenario.effect.Merge;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +27,8 @@ public class PersonService {
     @Autowired
     MedicalRecordService medicalRecordService;
 
-    /*public PersonService(){
+    private Logger logger = LogManager.getLogger(PersonService.class);
 
-    }
-
-    public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }*/
 
     public Person savePerson(Person person) {
         return personRepository.save(person);
@@ -40,10 +38,6 @@ public class PersonService {
         personRepository.saveAll(persons);
     }
 
-
-    /*public Iterable<Person> getPersonsFromLastName(String lastName) {
-        return personRepository.findByLastName(lastName);
-    }*/
 
     public Iterable<Person> getPersons() {
         return personRepository.findAll();
@@ -69,10 +63,9 @@ public class PersonService {
         String birthdate = m.getBirthdate();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDate dateOfBirth = LocalDate.parse(birthdate, formatter);
-        //LocalDate dateOfBirth = LocalDate.of(1969, Month.SEPTEMBER, 11);
         LocalDate now = LocalDate.now();
         int age = dateOfBirth.until(now).getYears();
-        System.out.println(age);
+        logger.debug("calcul de l'âge pour " + firstName + " " + lastName + ": " + age);
         return age;
     }
 

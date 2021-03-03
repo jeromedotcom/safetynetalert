@@ -32,13 +32,17 @@ public class Runner implements CommandLineRunner {
         ObjectMapper mapper = new ObjectMapper();
         AllDataObject allDataObject = null;
         try {
+            logger.debug("reading json file");
             allDataObject = mapper.readValue(new File("src/main/resources/data.json"), AllDataObject.class);
         } catch (Exception e) {
+            logger.error("error reading json file" + e);
             e.printStackTrace();
         }
-
+        logger.debug("saving persons");
         personService.savePersons(allDataObject.getPersons());
+        logger.debug("saving firestations");
         firestationService.saveFirestations(allDataObject.getFirestations());
+        logger.debug("saving medicalRecords");
         medicalRecordService.saveMedicalRecords(allDataObject.getMedicalrecords());
 
         logger.info("Datas saved!");
