@@ -22,7 +22,7 @@ public class FloodController {
     private Logger logger = LogManager.getLogger(FloodController.class);
 
     @GetMapping("/flood/stations")
-    public List getPeopleWhenFloodFromStationNumber(@RequestParam("stationNumber") List<String> stationNumber) {
+    public List getPeopleWhenFloodFromStationNumber(@RequestParam("stations") List<String> stationNumber) {
         logger.info("requête GET sur le endpoint /flood/stations avec le paramètre stationNumber: " + stationNumber);
         return floodService.getPeopleWhenFloodFromStationNumber(stationNumber);
     }

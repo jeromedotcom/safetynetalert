@@ -17,10 +17,10 @@ import java.util.List;
 
 @RestController
 public class FireController {
-    @Autowired
+/*    @Autowired
     PersonService personService;
     @Autowired
-    FirestationService firestationService;
+    FirestationService firestationService;*/
     @Autowired
     FireService fireService;
 
