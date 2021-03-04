@@ -26,8 +26,8 @@ public class FirestationService {
         return firestationRepository.findAllByStation(station);
     }
 
-    public Optional<Firestation> getFirestationFromAddress(String address) {
-        return firestationRepository.findByAddress(address);
+    public Iterable<Firestation> getFirestationFromAddress(String address) {
+        return firestationRepository.findAllByAddress(address);
     }
 
     public void deleteFirestationByStation(String station) {

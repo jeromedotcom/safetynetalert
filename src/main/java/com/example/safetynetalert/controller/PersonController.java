@@ -1,6 +1,5 @@
 package com.example.safetynetalert.controller;
 
-import com.example.safetynetalert.SafetynetalertApplication;
 import com.example.safetynetalert.model.Person;
 import com.example.safetynetalert.service.PersonService;
 import org.apache.logging.log4j.LogManager;
@@ -46,7 +45,7 @@ public class PersonController {
      * @return an iterable of persons
      */
     @GetMapping("/person/{lastName}/{firstName}")
-    public Optional<Person> getPersonFromLastNameAndFirstName(@PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName) {
+    public Person getPersonFromLastNameAndFirstName(@PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName) {
         logger.info("requête GET sur le endpoint /persons avec les paramètres lastName: " + lastName + " et firstName: " + firstName);
         return personService.getPersonFromLastNameAndFirstName(lastName, firstName);
     }
@@ -63,7 +62,7 @@ public class PersonController {
     public Person updatePerson(@PathVariable("lastName") final String lastName, @PathVariable("firstName") final String firstName, @RequestBody Person person) {
         logger.info("requête PUT sur le endpoint /person avec les paramètres lastName: " + lastName + " et firstName: " + firstName);
 
-        Optional<Person> p = personService.getPersonFromLastNameAndFirstName(lastName, firstName);
+        Optional<Person> p = Optional.ofNullable(personService.getPersonFromLastNameAndFirstName(lastName, firstName));
         if(p.isPresent()) {
             Person currentPerson = p.get();
 

@@ -36,11 +36,15 @@ public class FireService {
             firePeople.setMedications(medicalRecord.getMedications());
             firePeople.setAllergies(medicalRecord.getAllergies());
             firePeopleList.add(firePeople);
+
         }
 
         FireList fireList = new FireList();
-        String station = firestationService.getFirestationFromAddress(address).get().getStation();fireList.setAddress(address);
-        fireList.setFirestation(station);
+        List<String> stationList = new ArrayList<>() ;
+        firestationService.getFirestationFromAddress(address)
+                .forEach(firestation -> stationList.add(firestation.getStation()));
+        fireList.setAddress(address);
+        fireList.setFirestation(stationList);
         fireList.setFirePeopleList(firePeopleList);
         logger.info("réponse en retour à la requête GET sur le endpoint /fire avec le paramètre address: " + address);
         return fireList;

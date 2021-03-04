@@ -23,7 +23,6 @@ public class ChildAlertControllerTest {
     @MockBean
     ChildAlertService childAlertService;
 
-    @Disabled
     @Test
     public void testPhoneAlert() throws Exception {
         when(childAlertService.getChildFromAddress(anyString())).thenReturn(any(ChildAlertList.class));

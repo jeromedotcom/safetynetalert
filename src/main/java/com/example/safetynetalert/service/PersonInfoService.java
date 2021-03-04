@@ -17,8 +17,8 @@ public class PersonInfoService {
 
     @Autowired
     PersonService personService;
-    @Autowired
-    FirestationService firestationService;
+    /*@Autowired
+    FirestationService firestationService;*/
     @Autowired
     MedicalRecordService medicalRecordService;
 
@@ -26,16 +26,16 @@ public class PersonInfoService {
 
     public PersonInfo getAllInfoPerson(String firstName, String lastName) {
         //TODO si plus personnes
-        Optional<Person> person = personService.getPersonFromLastNameAndFirstName(lastName, firstName);
+        //Person person = personService.getPersonFromLastNameAndFirstName(lastName, firstName);
+        Person person = personService.getPersonFromLastNameAndFirstName(lastName, firstName);
         MedicalRecord medicalRecord = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(lastName, firstName);
 
         int age = personService.getAge(lastName, firstName);
-        //TODO faut il utiliser autowired?
         PersonInfo allInfoPerson = new PersonInfo();
         allInfoPerson.setLastName(lastName);
         allInfoPerson.setAge(age);
-        allInfoPerson.setAddress(person.get().getAddress());
-        allInfoPerson.setEmail(person.get().getEmail());
+        allInfoPerson.setAddress(person.getAddress());
+        allInfoPerson.setEmail(person.getEmail());
         allInfoPerson.setAllergies(medicalRecord.getAllergies());
         allInfoPerson.setMedications(medicalRecord.getMedications());
 

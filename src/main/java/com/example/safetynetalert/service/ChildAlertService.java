@@ -44,7 +44,7 @@ public class ChildAlertService {
         return childAlertList;
     }
 
-    public List getFamilyMembers(String address) {
+    /*public List getFamilyMembers(String address) {
         List familyMembers = new ArrayList();
         List<Person> personList = (List<Person>) personService.getPersonFromAddress(address);
         int i=0;
@@ -53,6 +53,6 @@ public class ChildAlertService {
             familyMembers.add(i++, person);
         }
         return familyMembers;
-    }
+    }*/
 
 }

@@ -1,10 +1,12 @@
 package com.example.safetynetalert.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Setter
 public class FloodList {
     String station;
     String address;

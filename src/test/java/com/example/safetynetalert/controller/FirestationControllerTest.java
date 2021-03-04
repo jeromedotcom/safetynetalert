@@ -66,14 +66,14 @@ public class FirestationControllerTest {
 
     @Test
     public void testGetFirestationsFromAddress() throws Exception {
-        when(firestationService.getFirestationFromAddress(anyString())).thenReturn(java.util.Optional.ofNullable(firestation));
+        when(firestationService.getFirestationFromAddress(anyString())).thenReturn(firestationList);
         mockMvc.perform(get("/firestation/address/test"))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void testUpdateFirestation() throws Exception {
-        when(firestationService.getFirestationFromAddress(anyString())).thenReturn(java.util.Optional.ofNullable(firestation));
+        when(firestationService.getFirestationFromAddress(anyString())).thenReturn(firestationList);
         mockMvc.perform(put("/firestation/test")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(firestationJson))
@@ -89,7 +89,7 @@ public class FirestationControllerTest {
 
     @Test
     public void testDeleteFirestationByAddress() throws Exception {
-        when(firestationService.getFirestationFromAddress(anyString())).thenReturn(java.util.Optional.ofNullable(firestation));
+        when(firestationService.getFirestationFromAddress(anyString())).thenReturn(firestationList);
         mockMvc.perform(delete("/firestation/address/test"))
                 .andExpect(status().isOk());
     }

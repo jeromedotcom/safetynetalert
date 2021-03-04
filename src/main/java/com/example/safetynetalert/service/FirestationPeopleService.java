@@ -16,8 +16,8 @@ public class FirestationPeopleService {
     FirestationService firestationService;
     @Autowired
     PersonService personService;
-    @Autowired
-    MedicalRecordService medicalRecordService;
+    /*@Autowired
+    MedicalRecordService medicalRecordService;*/
 
     private Logger logger = LogManager.getLogger(FirestationPeopleService.class);
 

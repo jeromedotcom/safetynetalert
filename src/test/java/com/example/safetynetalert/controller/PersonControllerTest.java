@@ -81,7 +81,7 @@ public class PersonControllerTest {
     @Test
     public void testGetPersonFromLastNameAndFirstName () throws Exception {
         when(personService.getPersonFromLastNameAndFirstName(anyString(), anyString()))
-                .thenReturn(java.util.Optional.ofNullable(person));
+                .thenReturn(person);
         mockMvc.perform(get("/person/test/test"))
                 .andExpect(status().isOk());
     }
@@ -89,7 +89,7 @@ public class PersonControllerTest {
     @Test
     public void testUpdatePerson () throws Exception {
         when(personService.getPersonFromLastNameAndFirstName(anyString(), anyString()))
-                .thenReturn(java.util.Optional.ofNullable(person));
+                .thenReturn(person);
         mockMvc.perform(put("/person/test/test")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(personJson))
@@ -99,7 +99,7 @@ public class PersonControllerTest {
     @Test
     public void testDeletePersonFromLastNameAndFirstName () throws Exception {
         when(personService.getPersonFromLastNameAndFirstName(anyString(), anyString()))
-                .thenReturn(java.util.Optional.ofNullable(person));
+                .thenReturn(person);
         mockMvc.perform(delete("/person/test/test"))
                 .andExpect(status().isOk());
     }

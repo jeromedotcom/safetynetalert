@@ -1,22 +1,16 @@
 package com.example.safetynetalert.service;
 
-import com.example.safetynetalert.SafetynetalertApplication;
 import com.example.safetynetalert.model.*;
 import com.example.safetynetalert.repository.PersonRepository;
-import com.sun.scenario.effect.Merge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -43,7 +37,7 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Optional<Person> getPersonFromLastNameAndFirstName(String lastName, String firstName) {
+    public Person getPersonFromLastNameAndFirstName(String lastName, String firstName) {
         return personRepository.findByLastNameAndFirstName(lastName, firstName);
     }
 

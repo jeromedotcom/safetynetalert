@@ -70,9 +70,9 @@ public class FirestationServiceTest {
         firestationService.getFirestationFromAddress(any(String.class));
         verify(firestationRepository, times(1)).findByAddress(any(String.class));*/
 
-        when(firestationRepository.findByAddress("abc")).thenReturn(java.util.Optional.ofNullable(f1));
+        when(firestationRepository.findAllByAddress("abc")).thenReturn(firestationList);
         firestationService.getFirestationFromAddress("abc");
-        verify(firestationRepository, times(1)).findByAddress("abc");
+        verify(firestationRepository, times(1)).findAllByAddress("abc");
 
     }
 

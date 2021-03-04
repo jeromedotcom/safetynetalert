@@ -1,9 +1,11 @@
 package com.example.safetynetalert.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.web.bind.annotation.RestController;
 
-@Data
+@Setter
 public class FirestationPeople {
 
     String firstName;

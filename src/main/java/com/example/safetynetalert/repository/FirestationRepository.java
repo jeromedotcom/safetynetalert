@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface FirestationRepository extends CrudRepository<Firestation, Long> {
     Iterable<Firestation> findAllByStation(String station);
 
-    Optional<Firestation> findByAddress(String address);
+    Iterable<Firestation> findAllByAddress(String address);
 
     void deleteByStation(String station);
 
