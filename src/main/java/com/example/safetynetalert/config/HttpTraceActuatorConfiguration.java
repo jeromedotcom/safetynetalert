@@ -1,4 +1,4 @@
-package com.example.safetynetalert;
+package com.example.safetynetalert.config;
 
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
 import org.springframework.boot.actuate.trace.http.InMemoryHttpTraceRepository;

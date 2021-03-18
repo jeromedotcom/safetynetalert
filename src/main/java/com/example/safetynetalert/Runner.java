@@ -46,7 +46,6 @@ public class Runner implements CommandLineRunner {
         medicalRecordService.saveMedicalRecords(allDataObject.getMedicalrecords());
 
         logger.info("Datas saved!");
-        System.out.println("Datas saved!");
     }
 
 }

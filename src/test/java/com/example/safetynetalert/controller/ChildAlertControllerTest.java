@@ -26,7 +26,7 @@ public class ChildAlertControllerTest {
     @Test
     public void testPhoneAlert() throws Exception {
         when(childAlertService.getChildFromAddress(anyString())).thenReturn(any(ChildAlertList.class));
-        mockMvc.perform(get("/childAlert?address=a"))
+        mockMvc.perform(get("/childAlert?address=1509 Culver St"))
                 .andExpect(status().isOk());
 
     }
