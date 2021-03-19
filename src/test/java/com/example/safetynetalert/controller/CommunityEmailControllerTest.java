@@ -24,7 +24,7 @@ public class CommunityEmailControllerTest {
     @Test
     public void testGetPeopleWhenFire() throws Exception {
         when(personService.getEmailsFromCity(anyString())).thenReturn(anyList());
-        mockMvc.perform(get("/communityEmail?city=a"))
+        mockMvc.perform(get("/communityEmail?city=Culver"))
                 .andExpect(status().isOk());
     }
 

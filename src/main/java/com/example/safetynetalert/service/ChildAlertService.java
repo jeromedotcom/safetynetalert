@@ -19,6 +19,11 @@ public class ChildAlertService {
 
     private Logger logger = LogManager.getLogger(ChildAlertService.class);
 
+    /**
+     * récupère une liste d'enfants habitant à une addresse donnée
+     * @param address l'addresse à partir de laquelle rechercher les enfants
+     * @return childAlertList retourne la liste des enfants avec leur âge ainsi que la liste des autres adultes du foyer
+     */
     public ChildAlertList getChildFromAddress(String address) {
         ChildAlertList childAlertList = new ChildAlertList();
         List childTransferList = new ArrayList();
@@ -40,7 +45,7 @@ public class ChildAlertService {
             childAlertList.setOtherFamilyMembers(adultTransferList);
             childAlertList.setChild(childTransferList);
         }
-        logger.info("réponse en retour à la requête GET sur le endpoint /childAlert avec paramètre address: " + address);
+        logger.info("retour de getChildFromAddress avec paramètre address " + address);
         return childAlertList;
     }
 

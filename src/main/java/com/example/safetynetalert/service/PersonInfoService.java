@@ -25,8 +25,6 @@ public class PersonInfoService {
     private Logger logger = LogManager.getLogger(PersonInfoService.class);
 
     public PersonInfo getAllInfoPerson(String firstName, String lastName) {
-        //TODO si plus personnes
-        //Person person = personService.getPersonFromLastNameAndFirstName(lastName, firstName);
         Person person = personService.getPersonFromLastNameAndFirstName(lastName, firstName);
         MedicalRecord medicalRecord = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(lastName, firstName);
 

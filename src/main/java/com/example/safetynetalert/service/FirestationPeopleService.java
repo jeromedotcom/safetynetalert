@@ -22,9 +22,9 @@ public class FirestationPeopleService {
     private Logger logger = LogManager.getLogger(FirestationPeopleService.class);
 
     /**
-     *
-     * @param stationNumber
-     * @return
+     * récupère la liste des personnes rattachés à une caserne et compte les adultes et enfants
+     * @param stationNumber le numéro de la caserne
+     * @return une liste comprenant le décompte des adultes et enfants ainsi que noms prénoms adresse et téléphone de chacun
      */
 
     public FirestationPeopleList getPeopleFromFirestationNumber(String stationNumber) {
@@ -42,7 +42,6 @@ public class FirestationPeopleService {
             Iterable<Person> persons = personService.getPersonFromAddress(firestation.getAddress());
             for (Person person : persons
                  ) {
-                //String birthdate = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(person.getLastName(), person.getFirstName()).getBirthdate();
                 int age = personService.getAge(person.getLastName(), person.getFirstName());
 
                 if (age>18) {

@@ -29,7 +29,6 @@ public class MedicalRecordController {
         return medicalRecordService.getMedicalRecordFromLastNameAndFirstName(lastName, firstName);
     }
 
-    //TODO tester quand n'existe pas
     @PutMapping("/medicalRecord/{lastName}/{firstName}")
     public MedicalRecord updateMedicalRecordByLastNameAndFirstName(@PathVariable("lastName") String lastName, @PathVariable("firstName") String firstName, @RequestBody MedicalRecord medicalRecord) {
         logger.info("requête PUT sur le endpoint /medicalRecord avec les paramètres lastName: " + lastName + " et firstName: " + firstName + " et le body" + medicalRecord);

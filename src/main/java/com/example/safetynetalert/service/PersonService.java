@@ -51,7 +51,6 @@ public class PersonService {
 
 
 
-    //TODO à mettre dans medical record ?
     public int getAge(String lastName, String firstName){
         MedicalRecord m = medicalRecordService.getMedicalRecordFromLastNameAndFirstName(lastName, firstName);
         String birthdate = m.getBirthdate();

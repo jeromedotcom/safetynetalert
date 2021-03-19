@@ -1,6 +1,7 @@
 package com.example.safetynetalert;
 
 import com.example.safetynetalert.model.AllDataObject;
+import static com.example.safetynetalert.config.Constants.filePath;
 import com.example.safetynetalert.service.FirestationService;
 import com.example.safetynetalert.service.MedicalRecordService;
 import com.example.safetynetalert.service.PersonService;
@@ -33,7 +34,7 @@ public class Runner implements CommandLineRunner {
         AllDataObject allDataObject = null;
         try {
             logger.debug("reading json file");
-            allDataObject = mapper.readValue(new File("src/main/resources/data.json"), AllDataObject.class);
+            allDataObject = mapper.readValue(new File(filePath), AllDataObject.class);
         } catch (Exception e) {
             logger.error("error reading json file" + e);
             e.printStackTrace();

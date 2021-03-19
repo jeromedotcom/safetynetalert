@@ -15,4 +15,5 @@ public class ChildAlertList {
     List<ChildAlert> child;
     List<Person> otherFamilyMembers;
 
+
 }
